@@ -11,9 +11,9 @@ from PIL.ExifTags import TAGS
 """
 By David DuVoising for Python 2.7
 I wrote this while making HDRI Spheres using PTGui. PTGui looks for bracketed exposures
-using a repeateing patterns such as 100, 200, 300, 1oo, 2oo, 3oo. However, I didn't
+using a repeateing patterns such as 100, 200, 300, 100, 200, 300. However, I didn't
 have a fancy camera that did automatic bracketing so I found it easier to do
-100, 200, 300, 300, 200, 100 which the software didn't like. So this script sortes
+100, 200, 300, 300, 200, 100 which the software didn't like. So this script sorts
 groups of bracketed exposures by their exposure time from the EXIF data on the images.
 """
 
