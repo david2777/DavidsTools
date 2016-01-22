@@ -1,6 +1,7 @@
 import os
 import sys
 import subprocess
+import win32clipboard
 
 #Qt
 from PyQt4.QtGui import *
@@ -18,6 +19,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.doOpenExplorer)
         QObject.connect(self.closeButton, SIGNAL("clicked()"),
                         self.doClose)
+
+        initialData = self.doGetClipboard()
+        if initialData and initialData[:2] == "C:" or initialData[:2] == "//" or initialData[:2] == "\\\\":
+            self.pathInLineEdit.setText(initialData)
+            self.doConvert()
+
+    def doGetClipboard(self):
+        try:
+            win32clipboard.OpenClipboard()
+            data = win32clipboard.GetClipboardData()
+            win32clipboard.CloseClipboard()
+            print data
+        except TypeError:
+            return None
+        return str(data)
 
     def convertPath(self, inputPath):
         newPath = os.path.abspath(inputPath)
