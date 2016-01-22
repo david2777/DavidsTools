@@ -13,6 +13,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         QMainWindow.__init__(self)
         self.setupUi(self)
 
+        self.setWindowTitle("Open Path Tool")
+
         QObject.connect(self.convertButton, SIGNAL("clicked()"),
                         self.doConvert)
         QObject.connect(self.explorerButton, SIGNAL("clicked()"),
@@ -21,9 +23,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.doClose)
 
         initialData = self.doGetClipboard()
-        if initialData and initialData[:2] == "C:" or initialData[:2] == "//" or initialData[:2] == "\\\\":
-            self.pathInLineEdit.setText(initialData)
-            self.doConvert()
+        if initialData:
+            if initialData[:2] == "C:" or initialData[:2] == "//" or initialData[:2] == "\\\\":
+                self.pathInLineEdit.setText(initialData)
+                self.doConvert()
 
     def doGetClipboard(self):
         try:
@@ -57,6 +60,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def doOpenExplorer(self):
         self.doConvert()
         subprocess.Popen("explorer {0}".format(self.pathOutLineEdit.text()))
+        sys.exit(0)
 
     def doClose(self):
         sys.exit(0)
