@@ -1,7 +1,9 @@
 global proc OpenCMDPorts(){
   //Get data to open ports
   string $thisNode = system("hostname");
-  $thisNode = match( "^[^(\r\n)]*", $thisNode);
+  //Get rid of newlines
+  $thisNode = match("^[^(\r\n)]*", $thisNode);
+  //Default ports are 5555 for MEL and 6666 for Python
   string $melCmdName = ($thisNode + ":5555");
   string $pyCmdName = ($thisNode + ":6666");
   print "\n\n";

@@ -31,6 +31,7 @@ def SendCommand(Host, Port, Command):
     return response
 
 if __name__=='__main__':
+    thisHost = socket.gethostname()
     #You can send strings, notice the \\n to print a new line rather than
     #   add a new line to the command.
     MelCommand = """sphere;\nprint "Wow this works!\\n";\n"""
@@ -40,5 +41,7 @@ if __name__=='__main__':
                 "cmds.sphere()",
                 "print 'Wow this works too!'"]
 
-    SendCommand("DavidPC", 5555, MelCommand)
-    SendCommand("DavidPC", 6666, PyCommand)
+    #MEL Commands go to 5555, Python to 6666
+    #This can be changed as long as you change it in the mel setup as well
+    SendCommand(thisHost, 5555, MelCommand)
+    SendCommand(thisHost, 6666, PyCommand)
