@@ -1,0 +1,28 @@
+global proc OpenCMDPorts(){
+  //Get data to open ports
+  string $thisNode = system("hostname");
+  $thisNode = match( "^[^(\r\n)]*", $thisNode);
+  string $melCmdName = ($thisNode + ":5555");
+  string $pyCmdName = ($thisNode + ":6666");
+  print "\n\n";
+  print "Starting Command Ports...\n";
+  //If the ports are not open, open them
+  if (`commandPort -q $melCmdName` == 0){
+      commandPort -sourceType "mel" -name $melCmdName;
+  }else{
+      print ("MEL Command Port already started at " + $melCmdName + "\n");
+  }
+  if (`commandPort -q $pyCmdName` == 0){
+      commandPort -sourceType "python" -name $pyCmdName;
+  }else{
+      print ("Python Command Port already started at " + $pyCmdName + "\n");
+  }
+  //Check to see if they are open now
+  if (`commandPort -q $melCmdName` == 0){
+      warning "Could not open MEL Command Port!";
+  }
+  if (`commandPort -q $pyCmdName` == 0){
+      warning "Could not open Python Command Port!";
+  }
+}
+OpenCMDPorts;
