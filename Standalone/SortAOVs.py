@@ -1,3 +1,4 @@
+"""Moves AOVs into their own folders.
 Made for use with Redshift's CMD Render tool."""
 import glob
 import os
