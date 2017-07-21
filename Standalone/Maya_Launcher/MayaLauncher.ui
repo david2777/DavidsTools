@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MayaLauncher</class>
+ <widget class="QMainWindow" name="MayaLauncher">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>274</width>
+    <height>481</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>274</width>
+    <height>481</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>274</width>
+    <height>481</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Maya Launcher</string>
+  </property>
+  <widget class="QWidget" name="ml_Widget">
+   <property name="minimumSize">
+    <size>
+     <width>274</width>
+     <height>481</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>274</width>
+     <height>481</height>
+    </size>
+   </property>
+   <layout class="QFormLayout" name="formLayout">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="maya_Label">
+      <property name="text">
+       <string>Maya Version:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QListWidget" name="maya_ListWidget"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QPushButton" name="cancel_PushButton">
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QPushButton" name="launch_PushButton">
+      <property name="text">
+       <string>Launch</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="rs_Label">
+      <property name="text">
+       <string>Redshift Version:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QListWidget" name="rs_ListWidget"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
